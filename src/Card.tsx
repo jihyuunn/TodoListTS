@@ -10,11 +10,22 @@ interface Props {
 }
 
 const CardContainer = styled.div`
-  &.done {
+  font-weight: 300;
+  font-size: 1.5rem;
+  padding: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  div.done {
       text-decoration: line-through;
+    text-decoration-color: rgb(129, 214, 185);
   }
-  &.ongoing {
+  div.ongoing {
       text-decoration: none;
+  }
+  span {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #494d8f;
   }
 `;
 

@@ -4,6 +4,10 @@ import Header from "./Header";
 import Input from "./Input";
 import Card from "./Card";
 
+const MainContainer = styled.div`
+  width: 95%;
+`
+
 const Main = () => {
   const [showInput, setShowInput] = useState<boolean>(false);
   const startInput = () => {
@@ -36,7 +40,7 @@ const Main = () => {
     setTodoItem('')
   };
   return (
-    <div>
+    <MainContainer>
       <Header startInput={startInput} />
       <Input
         showInput={showInput}
@@ -53,7 +57,7 @@ const Main = () => {
           onToggle={onToggle}
         />
       ))}
-    </div>
+    </MainContainer>
   );
 };
 
