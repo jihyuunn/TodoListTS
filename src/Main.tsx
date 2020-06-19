@@ -21,7 +21,7 @@ const Main = () => {
   ]);
   const onToggle = (event: any) => {
     event.preventDefault();
-    let id = event.target.dataset.id;
+    let id = event.target.parentNode.dataset.id;
     const copyArray = todoList;
     copyArray[id].done = !todoList[id].done;
     setTodoList([...copyArray]);
@@ -30,7 +30,6 @@ const Main = () => {
   const [todoItem, setTodoItem] = useState<string>("");
   const getTodoItem = (event: any) => {
     setTodoItem(event.target.value);
-    console.log(event.target.value);
   };
   const addTodoItem = (event: any) => {
     event.preventDefault();
@@ -39,6 +38,17 @@ const Main = () => {
     setTodoList(prev => [...prev, newItem]);
     setTodoItem('')
   };
+  const removeTodoItem = (event:any) => {
+      event.preventDefault();
+      const id = parseInt(event.target.parentNode.dataset.id);
+      const newList:any = [];
+      todoList.forEach(item => {
+          if (item.id !== id) {
+              newList.push(item)
+          }
+      });
+      setTodoList([...newList]);
+  }
   return (
     <MainContainer>
       <Header startInput={startInput} />
@@ -55,6 +65,7 @@ const Main = () => {
           todo={item.todo}
           done={item.done}
           onToggle={onToggle}
+          removeTodoItem={removeTodoItem}
         />
       ))}
     </MainContainer>
